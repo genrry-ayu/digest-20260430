@@ -6,17 +6,16 @@
 <title>AI Builder Digest — 2026.04.30</title>
 <style>
   :root {
-    --bg: #0d0d12;
-    --surface: #15151c;
-    --surface-hover: #1c1c26;
-    --border: #23232e;
-    --accent: #6c5ce7;
-    --accent-dim: #4834d4;
-    --orange: #f97316;
-    --green: #22c55e;
-    --text: #e2e2ec;
-    --text-dim: #8888a0;
-    --text-muted: #5c5c74;
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --border: #222;
+    --border-light: #2a2a2a;
+    --white: #f0f0f0;
+    --gray-300: #ccc;
+    --gray-400: #999;
+    --gray-500: #666;
+    --gray-600: #444;
+    --gray-700: #333;
     --radius: 12px;
     --radius-sm: 8px;
   }
@@ -24,7 +23,7 @@
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang SC", "Helvetica Neue", sans-serif;
     background: var(--bg);
-    color: var(--text);
+    color: var(--white);
     line-height: 1.6;
     padding: 0;
     -webkit-font-smoothing: antialiased;
@@ -33,21 +32,30 @@
 
   .header {
     padding: 40px 20px 24px;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
+    border-bottom: 1px solid var(--gray-700);
   }
-  .header h1 { font-size: 28px; font-weight: 700; }
-  .header .subtitle { font-size: 16px; color: rgba(255,255,255,0.7); margin-top: 6px; }
+  .header h1 { font-size: 28px; font-weight: 700; color: var(--white); }
+  .header .subtitle { font-size: 16px; color: var(--gray-500); margin-top: 6px; }
   .header .meta-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
-  .header .badge { font-size: 13px; padding: 5px 12px; border-radius: 20px; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); font-weight: 500; }
+  .header .badge {
+    font-size: 13px; padding: 5px 14px; border-radius: 20px;
+    border: 1px solid var(--gray-600);
+    color: var(--gray-400); font-weight: 500;
+  }
 
-  .section { padding: 20px; border-bottom: 1px solid var(--border); }
-  .section-title { font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+  .section { padding: 20px; border-bottom: 1px solid var(--gray-700); }
+  .section-title {
+    font-size: 14px; font-weight: 600;
+    color: var(--gray-400);
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
 
   .highlight-box {
     background: var(--surface);
     border-radius: var(--radius);
     padding: 18px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     border: 1px solid var(--border);
   }
   .highlight-box:last-child { margin-bottom: 0; }
@@ -55,41 +63,37 @@
   .highlight-label {
     font-size: 13px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+    color: var(--gray-300);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
   }
-  .highlight-label.green { color: var(--green); }
-  .highlight-label.orange { color: var(--orange); }
-  .highlight-label.purple { color: var(--accent); }
 
-  .highlight-box p { font-size: 17px; line-height: 1.65; }
+  .highlight-box p {
+    font-size: 17px; line-height: 1.65;
+    color: var(--white);
+  }
+  .highlight-box p strong { color: var(--white); font-weight: 700; }
 
   .detail-toggle {
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-top: 12px;
+    padding-top: 12px;
     border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .detail-toggle .toggle-btn {
-    font-size: 14px;
-    color: var(--accent);
-    font-weight: 500;
     cursor: pointer;
-    background: none;
-    border: none;
-    padding: 4px 0;
+  }
+  .detail-toggle span {
+    font-size: 14px;
+    color: var(--gray-500);
   }
   .detail-content {
-    margin-top: 10px;
+    margin-top: 12px;
     display: none;
     font-size: 15px;
-    color: var(--text-dim);
-    line-height: 1.6;
+    color: var(--gray-400);
+    line-height: 1.7;
   }
   .detail-content.show { display: block; }
+  .detail-content p { margin-bottom: 6px; }
+  .detail-content p:last-child { margin-bottom: 0; }
 
   .card {
     background: var(--surface);
@@ -98,9 +102,9 @@
     margin-bottom: 10px;
     border: 1px solid var(--border);
   }
-  .card-name { font-size: 18px; font-weight: 600; }
-  .card-name .tag { font-size: 14px; color: var(--text-muted); font-weight: 400; }
-  .card-role { font-size: 14px; color: var(--text-dim); margin-top: 3px; }
+  .card-name { font-size: 18px; font-weight: 600; color: var(--white); }
+  .card-name .tag { font-size: 14px; color: var(--gray-500); font-weight: 400; }
+  .card-role { font-size: 14px; color: var(--gray-500); margin-top: 3px; }
 
   .tweet-list { margin-top: 10px; }
   .tweet-item {
@@ -108,18 +112,19 @@
     border-top: 1px solid var(--border);
   }
   .tweet-item:first-child { border-top: none; padding-top: 0; }
-  .tweet-text { font-size: 17px; line-height: 1.6; }
+  .tweet-text { font-size: 17px; line-height: 1.6; color: var(--white); }
+  .tweet-text strong { color: var(--white); }
   .tweet-link {
     display: inline-block;
     font-size: 13px;
-    color: var(--accent);
+    color: var(--gray-400);
     text-decoration: none;
     margin-top: 5px;
   }
 
-  .podcast-title { font-size: 20px; font-weight: 600; }
-  .podcast-meta { font-size: 15px; color: var(--text-dim); margin-bottom: 4px; }
-  .podcast-guest { font-size: 15px; color: var(--text-dim); margin-top: 3px; }
+  .podcast-title { font-size: 20px; font-weight: 600; color: var(--white); }
+  .podcast-meta { font-size: 15px; color: var(--gray-500); margin-bottom: 4px; }
+  .podcast-guest { font-size: 15px; color: var(--gray-500); margin-top: 3px; }
 
   .wim-card {
     background: var(--surface);
@@ -128,32 +133,35 @@
     margin-bottom: 10px;
     border: 1px solid var(--border);
   }
-  .wim-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
-  .wim-card p { font-size: 15px; color: var(--text-dim); line-height: 1.6; }
+  .wim-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; color: var(--white); }
+  .wim-card p { font-size: 15px; color: var(--gray-400); line-height: 1.6; }
 
   .stats-strip {
     display: flex; gap: 10px; padding: 14px 20px; overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    border-bottom: 1px solid var(--gray-700);
   }
   .stats-strip::-webkit-scrollbar { display: none; }
   .stat-pill {
     flex-shrink: 0; padding: 7px 16px; border-radius: 20px;
-    background: var(--surface); border: 1px solid var(--border);
-    font-size: 15px; font-weight: 500;
+    background: var(--surface); border: 1px solid var(--gray-600);
+    font-size: 15px; font-weight: 500; color: var(--gray-400);
   }
-  .stat-pill .num { color: var(--accent); font-weight: 700; }
+  .stat-pill .num { color: var(--gray-300); font-weight: 700; }
 
   .footer {
     padding: 20px; text-align: center; font-size: 13px;
-    color: var(--text-muted); border-top: 1px solid var(--border);
+    color: var(--gray-600);
   }
-  .footer a { color: var(--accent-dim); text-decoration: none; }
+  .footer a { color: var(--gray-500); text-decoration: none; }
 
   .stage-list { margin-top: 12px; }
   .stage-item { display: flex; gap: 10px; padding: 8px 0; border-top: 1px solid var(--border); align-items: flex-start; }
   .stage-item:first-child { border-top: none; }
-  .stage-num { font-size: 14px; font-weight: 700; color: var(--accent); min-width: 30px; flex-shrink: 0; }
-  .stage-desc { font-size: 16px; }
+  .stage-num { font-size: 14px; font-weight: 700; color: var(--white); min-width: 30px; flex-shrink: 0; }
+  .stage-desc { font-size: 16px; color: var(--gray-400); }
+
+  .inline-link { color: var(--gray-400); text-decoration: none; border-bottom: 1px solid var(--gray-600); }
 </style>
 </head>
 <body>
@@ -162,76 +170,76 @@
   <h1>AI Builder Digest</h1>
   <div class="subtitle">2026 年 4 月 30 日</div>
   <div class="meta-row">
-    <span class="badge">🐦 5 Builders</span>
-    <span class="badge">🎙️ 1 Podcast</span>
-    <span class="badge">📝 0 Blogs</span>
+    <span class="badge">5 Builders</span>
+    <span class="badge">1 Podcast</span>
+    <span class="badge">0 Blogs</span>
   </div>
 </div>
 
 <div class="stats-strip">
-  <div class="stat-pill">🐦 推文 <span class="num">8</span></div>
-  <div class="stat-pill">🎙️ 播客 1 期</div>
-  <div class="stat-pill">📰 博客 0</div>
+  <div class="stat-pill">推文 8</div>
+  <div class="stat-pill">播客 1 期</div>
+  <div class="stat-pill">博客 0</div>
 </div>
 
 <!-- ====== TOP SIGNALS ====== -->
 <div class="section">
-  <div class="section-title">📡 今日关键信号</div>
+  <div class="section-title">今日关键信号</div>
 
   <div class="highlight-box">
-    <div class="highlight-label green">信号 1 · Agent 经济重塑基础设施</div>
-    <p>Stripe 观察到 LLM 流向其文档的流量同比增 <strong>10x</strong>——机器已成为开发者文档的主要消费者。旧金山正在从"人类互联网"向"人-代理-代理"经济转型，每一层基础设施都需要重新设计。</p>
+    <div class="highlight-label">信号 1 · Agent 经济重塑基础设施</div>
+    <p>Stripe 观察到 LLM 流向其文档的流量同比增 <strong>10x</strong>——机器已成为开发者文档的主要消费者。从"人类互联网"向"人-代理-代理"经济转型，每一层基础设施都需要重新设计。</p>
     <div class="detail-toggle">
-      <span style="font-size:14px; color:var(--text-dim);">👇 Stripe 数据与 AI 负责人 Emily 的深度分析</span>
+      <span>展开详情 →</span>
     </div>
     <div class="detail-content">
       <p>LLM 到 Stripe Docs 的流量同比涨 10x——机器正在成为开发者文档的主要消费者。</p>
       <p>Internet 经济从"人-人"向"人-代理-代理"演变，每层基础设施都需要重新思考。</p>
       <br>
-      <p style="color:var(--accent); font-size:15px; font-weight:500;">代理电商的 3 个阶段</p>
+      <p style="color:var(--gray-300); font-weight:500;">代理电商的 3 个阶段</p>
       <div class="stage-list">
-        <div class="stage-item"><div class="stage-num">1</div><div class="stage-desc"><strong>AI 辅助购买</strong> — 人做决定，AI 减少摩擦</div></div>
-        <div class="stage-item"><div class="stage-num">2</div><div class="stage-desc"><strong>授权代理购买</strong> — 人给约束，代理执行交易</div></div>
-        <div class="stage-item"><div class="stage-num">3</div><div class="stage-desc"><strong>全自动购买</strong> — AI 知道需求并主动完成</div></div>
+        <div class="stage-item"><div class="stage-num">1</div><div class="stage-desc">AI 辅助购买 — 人做决定，AI 减少摩擦</div></div>
+        <div class="stage-item"><div class="stage-num">2</div><div class="stage-desc">授权代理购买 — 人给约束，代理执行交易</div></div>
+        <div class="stage-item"><div class="stage-num">3</div><div class="stage-desc">全自动购买 — AI 知道需求并主动完成</div></div>
       </div>
     </div>
   </div>
 
   <div class="highlight-box">
-    <div class="highlight-label orange">信号 2 · AI 公司的隐形杀手：欺诈</div>
-    <p>AI 公司每次免费试用的真实成本是 <strong>$25</strong>。一个大型客户数据显示：免费转付费率仅 4%，实际花 <strong>$625 才换回 1 个付费用户</strong>。过去 6 个月欺诈试用增长 4 倍，某客户每周拦截 25 万次。欺诈不再是交易问题，而是从注册开始的客户全漏斗问题。</p>
+    <div class="highlight-label">信号 2 · AI 公司的隐形杀手：欺诈</div>
+    <p>AI 公司每次免费试用的真实成本是 <strong>$25</strong>。一个大型客户：免费转付费率仅 4%，实际花 <strong>$625 才换回 1 个付费用户</strong>。欺诈试用 6 个月增长 4 倍，某客户每周拦截 25 万次。欺诈不再是交易问题，而是从注册开始的客户全漏斗问题。</p>
     <div class="detail-toggle">
-      <span style="font-size:14px; color:var(--text-dim);">👇 三种新型欺诈详解</span>
+      <span>展开详情 →</span>
     </div>
     <div class="detail-content">
-      <p style="font-weight:600; margin-top:8px;">1. 计算被盗</p>
-      <p>AI 公司每 1 次免费试用 = $25 LLM 成本。某大 AI 客户免费转付费率仅 4%，实际 $625 才换来 1 个付费用户。大多数试用者其实是滥用者，从未打算付款。</p>
-      <p style="font-weight:600; margin-top:8px;">2. 多重账号滥用</p>
-      <p>约 7% 的注册是恶意的多账号行为。欺诈者不断创建新邮箱领取免费额度。</p>
-      <p style="font-weight:600; margin-top:8px;">3. 免费试用滥用</p>
-      <p>过去 6 个月增长 4 倍。某大客户每周拦截 25 万次欺诈试用。阻止虚拟卡会误伤 15% 的正常交易。</p>
+      <p style="margin-top:8px;"><strong style="color:var(--gray-300);">1. 计算被盗</strong></p>
+      <p>每次免费试用 = $25 LLM 成本。大多数试用者其实是滥用者，从未打算付款。</p>
+      <p style="margin-top:8px;"><strong style="color:var(--gray-300);">2. 多重账号滥用</strong></p>
+      <p>约 7% 的注册是恶意的多账号行为。</p>
+      <p style="margin-top:8px;"><strong style="color:var(--gray-300);">3. 免费试用滥用</strong></p>
+      <p>过去 6 个月增长 4 倍。某大客户每周拦截 25 万次欺诈试用。</p>
     </div>
   </div>
 
   <div class="highlight-box">
-    <div class="highlight-label orange">信号 3 · Seat-based 定价正在崩塌</div>
+    <div class="highlight-label">信号 3 · Seat-based 定价正在崩塌</div>
     <p>Token 计费 → Outcome 计费。Fin（客服平台）已按"解决的问题"收费。当 AI 让每个开发者 10x 时，按人头收费的逻辑站不住了。Top 100 AI 公司到 $30M ARR 平均只要 <strong>18 个月</strong>，是 2018 年 SaaS 的 <strong>3 倍</strong>。</p>
   </div>
 
   <div class="highlight-box">
-    <div class="highlight-label purple">信号 4 · Gemini 走向生产工具</div>
-    <p>Google 让 Gemini 可以直接生成并导出 Google Docs / Word / PDF / Sheets / Excel / CSV / Slides / Markdown / LaTeX。从对话工具到办公套件——这是对竞争格局的微妙但重要的侵蚀。</p>
+    <div class="highlight-label">信号 4 · Gemini 走向生产工具</div>
+    <p>Gemini 可以直接生成并导出 Google Docs / Word / PDF / Sheets / Excel / CSV / Slides / Markdown / LaTeX。从对话工具到办公套件——这是对竞争格局的微妙但重要的侵蚀。</p>
   </div>
 
   <div class="highlight-box">
-    <div class="highlight-label purple">信号 5 · Linear 重构设计→工程流程</div>
-    <p>Linear 正在从头重新设计 Design 到 Engineering 的交接流程。这反映了产品团队协作链路正在被 AI 工具链重新定义。</p>
+    <div class="highlight-label">信号 5 · Linear 重构设计工程流程</div>
+    <p>Linear 正在从头重新设计 Design 到 Engineering 的交接流程。产品团队协作链路正被 AI 工具链重新定义。</p>
   </div>
 </div>
 
 <!-- ====== TWITTER ====== -->
 <div class="section">
-  <div class="section-title">🐦 X / Twitter</div>
+  <div class="section-title">X / Twitter</div>
 
   <div class="card">
     <div class="card-name">Swyx <span class="tag">@swyx</span></div>
@@ -295,7 +303,7 @@
 
 <!-- ====== PODCAST ====== -->
 <div class="section">
-  <div class="section-title">🎙️ Podcast</div>
+  <div class="section-title">Podcast</div>
 
   <div class="card">
     <div class="podcast-meta">AI & I by Every</div>
@@ -307,11 +315,11 @@
 
 <!-- ====== WHY IT MATTERS ====== -->
 <div class="section">
-  <div class="section-title">💡 Why It Matters</div>
+  <div class="section-title">Why It Matters</div>
 
   <div class="wim-card">
     <h3>做 AI 产品 → 欺诈是第一天就该想的问题</h3>
-    <p>$25 一次试用、4% 转付费率、7% 多账号滥用——Stripe 的数据非常具体。计算才是 AI 公司的新 CAC，不是广告。</p>
+    <p>$25 一次试用、4% 转付费率、7% 多账号滥用——计算才是 AI 公司的新 CAC，不是广告。</p>
   </div>
 
   <div class="wim-card">
@@ -321,7 +329,7 @@
 
   <div class="wim-card">
     <h3>做 UX / 产品设计 → 定价模型正在范式迁移</h3>
-    <p>Seat-based 定价被系统性地挑战。当 AI 让每个开发者 10x，按人头收费的逻辑崩塌了。很快你会面对"按成果定价"的设计决策。</p>
+    <p>Seat-based 定价被系统性地挑战。AI 让每个开发者 10x，按人头收费的逻辑崩塌了。很快你会面对"按成果定价"的设计决策。</p>
   </div>
 
   <div class="wim-card">
@@ -331,18 +339,17 @@
 </div>
 
 <div class="footer">
-  Generated through <a href="https://github.com/zarazhangrui/follow-builders">Follow Builders</a> ✦
+  Generated through <a href="https://github.com/zarazhangrui/follow-builders">Follow Builders</a>
 </div>
 
 <script>
-// Click to toggle detail sections
 document.querySelectorAll('.detail-toggle').forEach(el => {
   el.addEventListener('click', function() {
     const content = this.nextElementSibling;
     if (content && content.classList.contains('detail-content')) {
       content.classList.toggle('show');
       this.querySelector('span').textContent =
-        content.classList.contains('show') ? '▲ 收起详情' : '👇 展开详情';
+        content.classList.contains('show') ? '收起详情 ↑' : '展开详情 →';
     }
   });
 });
